@@ -1,9 +1,7 @@
-A linked-list stack pushes and pops at the head rather than the tail to maintain an $O(1)$ time complexity. 
-If operations were performed at the tail of a singly linked list, 
-each push or pop would require traversing the entire list to update the final pointer, 
-resulting in $O(n)$ time complexity. Meanwhile, 
-an array queue must be circular to efficiently reuse memory; 
-as elements are dequeued from the front, those slots become empty. 
-By wrapping the rear and front indices around using the modulo operator, 
-the queue avoids wasting space and eliminates the need to shift all remaining elements to the left 
-(which would otherwise degrade performance to $O(n)$).
+# Analysis
+
+**Why does the linked-list stack push at the head instead of the tail?**
+In a singly linked list, each node only points forward, so removing the last node requires walking the whole list to find the second-to-last node, which makes `pop` O(n). At the head, both inserting and removing only change one reference (`top`), so `push`, `pop`, and `peek` are all O(1). Since a stack only ever touches one end, the head is the natural choice.
+
+**Why must the array queue be circular?**
+In a plain array queue, `dequeue` either moves `front` forward and permanently wastes the freed slots at the start, or shifts every element left, which costs O(n). Making the array circular with the modulo operator lets `front` and the rear position wrap back to index 0, so freed slots are reused and both `enqueue` and `dequeue` stay O(1) with no wasted space. A `size` counter is used to tell a full queue from an empty one.

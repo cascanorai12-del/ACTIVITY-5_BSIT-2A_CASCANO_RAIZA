@@ -1,4 +1,3 @@
-ACTIVITY#5_BSIT-2A_CASCANO_RAIZA
 Stacks and Queues: Array vs. Linked List
 About the Program
 This beginner-friendly Python program demonstrates four data structures:
